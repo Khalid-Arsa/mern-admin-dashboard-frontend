@@ -187,7 +187,7 @@ const Dashboard = () => {
           p="1.5rem"
           borderRadius="0.55rem"
         >
-          <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
+          <Typography variant="h6" sx={{ color: theme.palette.secondary.light }}>
             Sales By Category
           </Typography>
           <BreakdownChart isDashboard={true} />
