@@ -79,16 +79,16 @@ const Dashboard = () => {
       </FlexBetween>
 
       <Box
-        mt="20px"
-        display="grid"
-        gridTemplateColumns="repeat(12, 1fr)"
-        gridAutoRows="160px"
+        gridColumn="span 12"
         gap="20px"
+        display="grid"
+        gridTemplateColumns="repeat(8, 1fr)"
+        gridAutoRows="140px"
         sx={{
           "& > div": { gridColumn: isNonMediumScreens ? undefined : "span 12" },
+          mt: "20px"
         }}
       >
-        {/* ROW 1 */}
         <StatBox
           title="Total Customers"
           value={data && data.totalCustomers}
@@ -111,15 +111,6 @@ const Dashboard = () => {
             />
           }
         />
-        <Box
-          gridColumn="span 8"
-          gridRow="span 2"
-          backgroundColor={theme.palette.background.alt}
-          p="1rem"
-          borderRadius="0.55rem"
-        >
-          <OverviewChart view="sales" isDashboard={true} />
-        </Box>
         <StatBox
           title="Monthly Sales"
           value={data && data.thisMonthStats.totalSales}
@@ -142,6 +133,28 @@ const Dashboard = () => {
             />
           }
         />
+      </Box>
+
+      <Box
+        mt="20px"
+        display="grid"
+        gridTemplateColumns="repeat(12, 1fr)"
+        gridAutoRows="160px"
+        gap="20px"
+        sx={{
+          "& > div": { gridColumn: isNonMediumScreens ? undefined : "span 12" },
+        }}
+      >
+        {/* ROW 1 */}
+        <Box
+          gridColumn="span 12"
+          gridRow="span 2"
+          backgroundColor={theme.palette.background.alt}
+          p="1rem"
+          borderRadius="0.55rem"
+        >
+          <OverviewChart view="sales" isDashboard={true} />
+        </Box>
 
         {/* ROW 2 */}
         <Box
@@ -187,7 +200,10 @@ const Dashboard = () => {
           p="1.5rem"
           borderRadius="0.55rem"
         >
-          <Typography variant="h6" sx={{ color: theme.palette.secondary.light }}>
+          <Typography
+            variant="h6"
+            sx={{ color: theme.palette.secondary.light }}
+          >
             Sales By Category
           </Typography>
           <BreakdownChart isDashboard={true} />
