@@ -1,16 +1,16 @@
 import React from "react";
 import { Box, useTheme } from "@mui/material";
-import { useGetGeographyQuery } from "state/api";
-import Header from "components/Header";
+import { useGetGeographyQuery } from "../../state/api";
+import Header from "../../components/Header";
 import { ResponsiveChoropleth } from "@nivo/geo";
-import { geoData } from "state/geoData";
+import { geoData } from "../../state/geoData";
 
 const Geography = () => {
   const theme = useTheme();
   const { data } = useGetGeographyQuery();
 
   return (
-    <Box m="1.5rem 2.5rem">
+    <Box m="1.5rem 2.5rem" paddingBottom={4}>
       <Header title="GEOGRAPHY" subtitle="Find where your users are located." />
       <Box
         mt="40px"
@@ -50,7 +50,7 @@ const Geography = () => {
               },
               tooltip: {
                 container: {
-                  color: theme.palette.primary.main,
+                  color: theme.palette.secondary[400],
                 },
               },
             }}

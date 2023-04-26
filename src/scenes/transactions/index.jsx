@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Box, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import { useGetTransactionsQuery } from "state/api";
-import Header from "components/Header";
-import DataGridCustomToolbar from "components/DataGridCustomToolbar";
+import { useGetTransactionsQuery } from "../../state/api";
+import Header from "../../components/Header";
+import DataGridCustomToolbar from "../../components/DataGridCustomToolbar";
 
 const Transactions = () => {
   const theme = useTheme();
@@ -54,7 +54,7 @@ const Transactions = () => {
   ];
 
   return (
-    <Box m="1.5rem 2.5rem">
+    <Box m="1.5rem 2.5rem" paddingBottom={4}>
       <Header title="TRANSACTIONS" subtitle="Entire list of transactions" />
       <Box
         height="80vh"

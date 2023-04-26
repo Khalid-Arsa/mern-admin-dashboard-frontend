@@ -1,10 +1,10 @@
 import React from "react";
 import { Box, useTheme } from "@mui/material";
-import { useGetUserPerformanceQuery } from "state/api";
 import { useSelector } from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
-import Header from "components/Header";
-import CustomColumnMenu from "components/DataGridCustomColumnMenu";
+import Header from "../../components/Header";
+import CustomColumnMenu from "../../components/DataGridCustomColumnMenu";
+import { useGetUserPerformanceQuery } from "../../state/api";
 
 const Performance = () => {
   const theme = useTheme();
@@ -43,7 +43,7 @@ const Performance = () => {
   ];
 
   return (
-    <Box m="1.5rem 2.5rem">
+    <Box m="1.5rem 2.5rem" paddingBottom={4}>
       <Header
         title="PERFORMANCE"
         subtitle="Track your Affiliate Sales Performance Here"

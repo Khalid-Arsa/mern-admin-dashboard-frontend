@@ -1,6 +1,6 @@
 import React from "react";
-import FlexBetween from "components/FlexBetween";
-import Header from "components/Header";
+import FlexBetween from "../../components/FlexBetween";
+import Header from "../../components/Header";
 import {
   DownloadOutlined,
   Email,
@@ -16,10 +16,10 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import BreakdownChart from "components/BreakdownChart";
-import OverviewChart from "components/OverviewChart";
-import { useGetDashboardQuery } from "state/api";
-import StatBox from "components/StatBox";
+import BreakdownChart from "../../components/BreakdownChart";
+import OverviewChart from "../../components/OverviewChart";
+import { useGetDashboardQuery } from "../../state/api";
+import StatBox from "../../components/StatBox";
 
 const Dashboard = () => {
   const theme = useTheme();
@@ -58,7 +58,7 @@ const Dashboard = () => {
   ];
 
   return (
-    <Box m="1.5rem 2.5rem">
+    <Box m="1.5rem 2.5rem" paddingBottom={4}>
       <FlexBetween>
         <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
 
@@ -79,16 +79,16 @@ const Dashboard = () => {
       </FlexBetween>
 
       <Box
-        mt="20px"
-        display="grid"
-        gridTemplateColumns="repeat(12, 1fr)"
-        gridAutoRows="160px"
+        gridColumn="span 12"
         gap="20px"
+        display="grid"
+        gridTemplateColumns="repeat(8, 1fr)"
+        gridAutoRows="140px"
         sx={{
           "& > div": { gridColumn: isNonMediumScreens ? undefined : "span 12" },
+          mt: "20px"
         }}
       >
-        {/* ROW 1 */}
         <StatBox
           title="Total Customers"
           value={data && data.totalCustomers}
@@ -111,15 +111,6 @@ const Dashboard = () => {
             />
           }
         />
-        <Box
-          gridColumn="span 8"
-          gridRow="span 2"
-          backgroundColor={theme.palette.background.alt}
-          p="1rem"
-          borderRadius="0.55rem"
-        >
-          <OverviewChart view="sales" isDashboard={true} />
-        </Box>
         <StatBox
           title="Monthly Sales"
           value={data && data.thisMonthStats.totalSales}
@@ -142,6 +133,28 @@ const Dashboard = () => {
             />
           }
         />
+      </Box>
+
+      <Box
+        mt="20px"
+        display="grid"
+        gridTemplateColumns="repeat(12, 1fr)"
+        gridAutoRows="160px"
+        gap="20px"
+        sx={{
+          "& > div": { gridColumn: isNonMediumScreens ? undefined : "span 12" },
+        }}
+      >
+        {/* ROW 1 */}
+        <Box
+          gridColumn="span 12"
+          gridRow="span 2"
+          backgroundColor={theme.palette.background.alt}
+          p="1rem"
+          borderRadius="0.55rem"
+        >
+          <OverviewChart view="sales" isDashboard={true} />
+        </Box>
 
         {/* ROW 2 */}
         <Box
@@ -187,7 +200,10 @@ const Dashboard = () => {
           p="1.5rem"
           borderRadius="0.55rem"
         >
-          <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
+          <Typography
+            variant="h6"
+            sx={{ color: theme.palette.secondary.light }}
+          >
             Sales By Category
           </Typography>
           <BreakdownChart isDashboard={true} />
